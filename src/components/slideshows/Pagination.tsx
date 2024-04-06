@@ -23,5 +23,6 @@ export function Pagination({
     );
   }
 
-  return <div style={{display:'flex',gap:'12px'}}>{children}</div>;
+  return <div style={{ display: 'flex', gap: '12px' }}>{children}
+  </div>;
 }

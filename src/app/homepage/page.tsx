@@ -1,9 +1,6 @@
 // "use-client"
 // import HomeWidgets from "../../components/widgets/gridLayout"
 
-
-
-
 // export default function HomePage() {
 //     return (
 //         <HomeWidgets />
@@ -16,6 +13,7 @@ import {
   SlideTwo,
   SlideThree,
 } from "../../components/slideshows";
+import Login from "../login/page";
 import { Global } from "@emotion/react";
 import Head from "next/head"; // Import next/head
 
@@ -38,6 +36,7 @@ export default function Onboarding() {
           <SlideOne key="1" />,
           <SlideTwo key="2" />,
           <SlideThree key="3" />,
+          // <Login key="4" />,
         ]}
       />
     </>

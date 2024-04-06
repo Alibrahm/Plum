@@ -1,13 +1,13 @@
 "use client";
-import { css ,SerializedStyles} from '@emotion/react'
-import { Pagination } from '../../components/slideshows'
-import Head from 'next/head'
-import { ReactNode, useState } from 'react'
-import SwipeableViews from 'react-swipeable-views'
-import { bindKeyboard } from 'react-swipeable-views-utils'
-import { FinishSlideshowBtn } from './AppBtn'
-import { CSSProperties } from "react";
-const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews)
+import { css, SerializedStyles } from "@emotion/react";
+import { Pagination } from "../../components/slideshows";
+import Head from "next/head";
+import { ReactNode, useState } from "react";
+import SwipeableViews from "react-swipeable-views";
+import { bindKeyboard } from "react-swipeable-views-utils";
+import { FinishSlideshowBtn } from "./AppBtn";
+import { useRouter } from "next/navigation";
+const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 const backgroundColors = ["#522080", "red", "green"];
 const radialGradient = `radial-gradient(#522080, #000000)`;
@@ -24,15 +24,21 @@ export const slideStyles: SerializedStyles = css`
   color: #fff;
   position: relative;
   .content {
-    margin-top: -32px;
+    margin-top: -1px;
   }
 `;
-
-
-
+ 
 export function Slideshow({ slides }: { slides: ReactNode[] }) {
-  const [index, setIndex] = useState(0)
-  const totalSlides = slides.length
+  const router = useRouter();
+  const [index, setIndex] = useState(0);
+  const totalSlides = slides.length;
+  const handleNextSlide = () => {
+    if (index < totalSlides - 1) {
+      setIndex((prevIndex) => prevIndex + 1); // Increment index by 1
+    } else {
+      router.push("/login"); // Navigate to the "/onboarding" route
+    }
+  };
 
   return (
     <>
@@ -45,11 +51,12 @@ export function Slideshow({ slides }: { slides: ReactNode[] }) {
       </Head>
       <div
         style={{
-          backgroundColor: backgroundColors[index],
+          backgroundColor:
+            "linear-gradient(rgba(82, 32, 128, 0.427), rgba(26, 10, 40, 0.6), rgb(0, 0, 0) 93%)",
           transition: "background-color 1s ease-out",
-          display: 'flex',
-          flexDirection: 'column',
-          overflow:'hidden'
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
         }}
       >
         <BindKeyboardSwipeableViews
@@ -69,14 +76,19 @@ export function Slideshow({ slides }: { slides: ReactNode[] }) {
             flexDirection: "column",
           }}
         >
-          <Pagination
-            dots={3}
-            index={index}
-            onChangeIndex={(i) => setIndex(i)}
-          />
-          <FinishSlideshowBtn
-            text={index === totalSlides - 1 ? `Get Started` : "Skip"}
-          />
+          {index !== 0 && (
+            <>
+              <Pagination
+                dots={3}
+                index={index}
+                onChangeIndex={(i) => setIndex(i)}
+              />
+              <FinishSlideshowBtn
+                text={index === totalSlides - 1 ? `Get Started` : "Next"}
+                onClick={handleNextSlide}
+              />
+            </>
+          )}
         </div>
       </div>
     </>

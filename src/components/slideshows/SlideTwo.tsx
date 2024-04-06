@@ -14,27 +14,46 @@ const SlideDiv = styled.div`
 export function SlideTwo() {
   return (
     <SlideDiv>
-      <div
-        className="content flex justify-center"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div className="content" style={{ position: "relative" }}>
         <Image
           priority={true}
           alt="slideshow image"
           src={profilePic}
-          // width={400}
-          // height={400}
           sizes="100vw"
           style={{
             width: "100vw",
             height: "100vh",
           }}
-          // layout="fill"
         />
-        {/* <div style={{ textAlign: "center" }}>
-        <h1>Material Design</h1>
-        <p>Built with Material design system</p>
-      </div> */}
+        <div
+          className="overlay"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(to bottom, rgba(82, 32, 128, 0.426), rgba(26, 10, 40, 0.6), #000000 93%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            color: "white",
+            zIndex: 1, // Ensure text is above the overlay
+          }}
+        >
+          <h1>Plum PWA</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Natoque risus consectetur
+            nam odio laoreet
+          </p>
+        </div>
       </div>
     </SlideDiv>
   );

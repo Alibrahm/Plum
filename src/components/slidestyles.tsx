@@ -12,7 +12,7 @@ const slideStyles: SerializedStyles = css`
   color: #fff;
   position: relative;
   .content {
-    margin-top: -32px;
+    margin-top: -2px;
   }
 `;
 

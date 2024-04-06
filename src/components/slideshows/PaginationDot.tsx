@@ -4,21 +4,21 @@ const styles = {
     width: 20,
     cursor: "pointer",
     border: 0,
-    background: "none",
+    background: "#D9D9D9",
     // padding: 12
   },
   dot: {
-    // backgroundColor: '#e4e6e7',
+    backgroundColor: '#D9D9D9',
     height: 20,
     width: 20,
     borderRadius: "50%",
-    border: "2px solid #fff",
+    border: "1px solid #D9D9D9",
     // margin: `0px 12px`
   },
   active: {
     backgroundColor: "#522080",
-    borderRadius: "30%",
-    width: 40,
+    // borderRadius: "30%",
+
    
   },
 };

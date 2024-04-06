@@ -45,8 +45,8 @@ export function SlideThree() {
             zIndex: 1, // Ensure text is above the overlay
           }}
         >
-          <h1>Mobile and Desktop</h1>
-          <p>Supports both mobile and desktop layouts</p>
+          <h1>Plum Finance</h1>
+          <p>Your finance Solution</p>
         </div>
       </div>
     </SlideDiv>
