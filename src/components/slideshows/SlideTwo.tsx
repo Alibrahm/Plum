@@ -1,11 +1,19 @@
 "use client";
 import { slideStyles } from "../../components/slideshows";
+// import  slideStyles  from "../../components/slidestyles";
 import Image from "next/image";
 import profilePic from "../../public/plumslide3.jpg";
+import { css } from '@emotion/react';
+import styled from "@emotion/styled";
+
+// Create a styled component for the div with slideStyles applied
+const SlideDiv = styled.div`
+  ${slideStyles}
+`;
 
 export function SlideTwo() {
   return (
-    <div style={slideStyles}>
+    <SlideDiv>
       <div
         className="content flex justify-center"
         style={{ display: "flex", justifyContent: "center" }}
@@ -28,6 +36,6 @@ export function SlideTwo() {
         <p>Built with Material design system</p>
       </div> */}
       </div>
-    </div>
+    </SlideDiv>
   );
 }

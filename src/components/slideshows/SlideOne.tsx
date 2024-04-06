@@ -1,12 +1,20 @@
 "use client";
 import { slideStyles } from "../../components/slideshows/Slideshow";
+// import slideStyles  from "../../components/slidestyles";
 import Image from "next/image";
 import plumlogo from "../../images/plumlogo.svg";
+import { css, } from "@emotion/react";
+import styled from "@emotion/styled";
+
+// Create a styled component for the div with slideStyles applied
+const SlideDiv = styled.div`
+  ${slideStyles}
+`;
 
 
 export function SlideOne() {
   return (
-    <div style={slideStyles}>
+    <SlideDiv>
       <div className="content flex justify-center">
         <Image
           priority={true}
@@ -22,6 +30,6 @@ export function SlideOne() {
           }}
         />
       </div>
-    </div>
+    </SlideDiv>
   );
 }

@@ -1,19 +1,19 @@
 "use client";
-import { css } from '@emotion/react'
+import { css ,SerializedStyles} from '@emotion/react'
 import { Pagination } from '../../components/slideshows'
 import Head from 'next/head'
 import { ReactNode, useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { bindKeyboard } from 'react-swipeable-views-utils'
 import { FinishSlideshowBtn } from './AppBtn'
-
+import { CSSProperties } from "react";
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews)
 
 const backgroundColors = ["#522080", "red", "green"];
 const radialGradient = `radial-gradient(#522080, #000000)`;
 
 // style for every slide
-export const slideStyles = css`
+export const slideStyles: SerializedStyles = css`
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,9 @@ export const slideStyles = css`
   .content {
     margin-top: -32px;
   }
-`
+`;
+
+
 
 export function Slideshow({ slides }: { slides: ReactNode[] }) {
   const [index, setIndex] = useState(0)

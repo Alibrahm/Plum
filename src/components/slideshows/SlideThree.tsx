@@ -2,10 +2,15 @@
 import { slideStyles } from "../../components/slideshows";
 import Image from "next/image";
 import slide2 from "../../public/plumslide2.jpg";
+import styled from "@emotion/styled";
 
+// Create a styled component for the div with slideStyles applied
+const SlideDiv = styled.div`
+  ${slideStyles}
+`;
 export function SlideThree() {
   return (
-    <div style={slideStyles}>
+    <SlideDiv>
       <div className="content" style={{ position: "relative" }}>
         <Image
           priority={true}
@@ -44,6 +49,6 @@ export function SlideThree() {
           <p>Supports both mobile and desktop layouts</p>
         </div>
       </div>
-    </div>
+    </SlideDiv>
   );
 }
