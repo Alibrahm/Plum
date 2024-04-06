@@ -17,17 +17,29 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div
+      className="overlay"
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background:
+          "linear-gradient(to bottom, rgba(82, 32, 128, 0.426), rgba(26, 10, 40, 0.6), #000000 93%)",
+      }}
+    >
       <Head>
         <title>Login</title>
       </Head>
+
       <div
         style={{
-        fontFamily: "Ubuntu",
-        fontSize: "2.1rem",
-        fontWeight: "bold",
-        margin: "19px",
-          marginTop:"49%"
+          fontFamily: "Ubuntu",
+          fontSize: "2.1rem",
+          fontWeight: "bold",
+          margin: "19px",
+          marginTop: "49%",
         }}
       >
         Get Started
@@ -66,7 +78,7 @@ const Login = () => {
           <button type="submit">Next</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -36,7 +36,6 @@ export default function Onboarding() {
           <SlideOne key="1" />,
           <SlideTwo key="2" />,
           <SlideThree key="3" />,
-          // <Login key="4" />,
         ]}
       />
     </>
