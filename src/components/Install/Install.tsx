@@ -6,7 +6,7 @@ const InstallButton = () => {
   const [showInstallButton, setShowInstallButton] = useState(false);
 
   useEffect(() => {
-    const handleBeforeinstallprompt = (event) => {
+    const handleBeforeinstallprompt = (event:any) => {
       event.preventDefault();
       setDeferredPrompt(event);
       setShowInstallButton(true);
@@ -23,11 +23,13 @@ const InstallButton = () => {
   }, []);
 
   const handleClick = async () => {
-    if (deferredPrompt) {
-      await deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      setShowInstallButton(outcome === "accepted");
-    }
+      if (deferredPrompt) {
+        //@ts-ignore
+        await deferredPrompt.prompt();
+        //@ts-ignore
+        const { outcome } = await deferredPrompt.userChoice;
+        setShowInstallButton(outcome === "accepted");
+      }
   };
 
   return (
