@@ -106,7 +106,7 @@ const Login = () => {
    // Define paper width based on screen size
    const paperWidth = isMediumScreen ? 540 : 320;
 
-  const paperStyle = {
+  const paperStyle: React.CSSProperties = {
     padding: 20,
     height: "70vh",
     position: 'absolute',
@@ -118,6 +118,11 @@ const Login = () => {
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
 
+   const muiStyle: React.CSSProperties = {
+     display: "flex",
+     justifyContent: "center",
+   };
+
     const handleOtpGeneration = () => {
       // Navigate to the /otp page
       router.push("/otp");
@@ -127,8 +132,8 @@ const Login = () => {
   return (
     <Grid style={{ display: "flex", justifyContent: "center" }}>
       <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
-          <div>Get Started, Lorem Ipsum Movies</div>
+        <Grid style={muiStyle}>
+          <div>Get Started, Lorem Ipsum </div>
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
