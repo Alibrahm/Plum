@@ -8,6 +8,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import plumlogo from "../../images/plumlogo.svg";
+import {
+  Slideshow,
+  SlideOne,
+  SlideTwo,
+  SlideThree,
+} from "../../components/kycslides";
 const bull = (
   <Box
     component="span"
@@ -19,35 +25,14 @@ const bull = (
 
 const card = (
   <React.Fragment>
-    <CardContent
-      sx={{
-        background:
-          "linear-gradient(to bottom, #522080, rgb(26 10 40 / 87%), #000000 100%)",
-        color: "white",
-      }}
-    >
-      <Image
-        priority={true}
-        alt="slideshow image"
-        src={plumlogo}
-        style={{
-          width: "60px",
-          height: "28px",
-          background: "transparent",
-        }}
-      />
-      <div
-        style={{ fontFamily: "Ubuntu", marginLeft: "9px", fontSize: "medium" }}
-      >
-        Wallet Amount
-      </div>
-
-      <div
-        style={{ fontFamily: "Ubuntu", marginLeft: "9px", fontSize: "28px",fontWeight:700 }}
-      >
-        $30,0000
-      </div>
-    </CardContent>
+  
+    <Slideshow
+      slides={[
+        <SlideOne key="1" />,
+        <SlideTwo key="2" />,
+        <SlideThree key="3" />,
+      ]}
+    />
     {/* <CardActions>
       <Button size="small">Learn More</Button>
     </CardActions> */}
@@ -56,8 +41,10 @@ const card = (
 
 export default function OutlinedCard() {
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
+    <Box sx={{ width: "100%", height: "auto",p:0 }}>
+      <Card sx={{ width: "100%", height: "auto",p:0, }} >
+        {card}
+      </Card>
     </Box>
   );
 }

@@ -11,17 +11,45 @@
     {
       "src": "/plum384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/plum512.png",
+      "src": "/plum512colored.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#3367D6",
+  "theme_color": "#522080",
   "background_color": "#522080",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "description": "Weather forecast information",
+  "screenshots": [
+    {
+      "src": "/plum512.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "onboarding",
+      "url": "/homepage",
+      "description": "Check your finances"
+    },
+    {
+      "name":"Profile",
+      "url":"/onboarding"
+    }
+  
+  ]
 }

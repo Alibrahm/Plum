@@ -13,6 +13,12 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import Image from "next/image";
+import plumlogout from "../../public/plumlogout.svg";
+import plumNotifications from "../../public/plummessage.svg";
+import Badge from "@mui/material/Badge";
+import plumlogo from "../../images/plumlogo.svg";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -45,15 +51,16 @@ function ResponsiveAppBar() {
       position="static"
       sx={{
         background:
-          "linear-gradient(to bottom, #522080, rgb(26 10 40 / 87%), #000000 100%)",
-        borderBottomLeftRadius: '16px',
-        borderBottomRightRadius:'16px'
+          "linear-gradient(to bottom, #522080,  #000000 100%)",
+        borderBottomLeftRadius: "16px",
+        borderBottomRightRadius: "16px",
+        minHeight: "84px",
       }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
+        <Toolbar disableGutters sx={{ marginTop: "10px" }}>
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          {/* <Typography
             variant="h6"
             noWrap
             component="a"
@@ -69,7 +76,19 @@ function ResponsiveAppBar() {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Image
+              priority={true}
+              alt="plum"
+              src={plumlogo}
+              style={{
+                width: "200px",
+                height: "20px",
+                marginLeft: "-18px",
+              }}
+            />
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -107,25 +126,55 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+
+          <Box sx={{ display: { xs: "none", md: "none" }, mr: 1 }}>
+            <Image
+              priority={true}
+              alt="plum"
+              src={plumlogo}
+              style={{
+                width: "200px",
+                height: "20px",
+                marginLeft: "-18px",
+              }}
+            />
+          </Box>
+
+          <Box
             sx={{
-              mr: 2,
+              mr: 9,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "Ubuntu",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none",
+              fontSize: "10px",
+              mb: "9px",
             }}
           >
-            LOGO
-          </Typography>
+            Good Morning,
+            <Typography
+              variant="body2"
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "Ubuntu",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                width: "min-content",
+                marginLeft: -10,
+                fontSize: "18px",
+              }}
+            >
+              Samuel
+            </Typography>
+          </Box>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -139,11 +188,51 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Sam Inchwara" src="/static/images/avatar/2.jpg" />
+            <Tooltip title="Open Notifications">
+              <Badge
+                badgeContent={4}
+                overlap="circular"
+                color="primary"
+                sx={{
+                  "& .MuiBadge-badge": {
+                    background: "#d21b19",
+                  },
+                }}
+              >
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 1, background: "#ffffff !important" }}
+                >
+                  <Image
+                    priority={true}
+                    alt="messages"
+                    src={plumNotifications}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </IconButton>
+              </Badge>
+            </Tooltip>
+
+            <Tooltip title="Logout">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ ml: 2, background: "#ffffff !important" }}
+              >
+                <Image
+                  priority={true}
+                  alt="slideshow image"
+                  src={plumlogout}
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                  }}
+                />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

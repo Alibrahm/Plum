@@ -17,10 +17,9 @@ export const slideStyles: SerializedStyles = css`
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-content: space-around;
-  justify-content: space-around;
+width:100%;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
   color: #fff;
   position: relative;
   .content {
@@ -59,35 +58,36 @@ export function Slideshow({ slides }: { slides: ReactNode[] }) {
           overflow: "hidden",
         }}
       >
-        <BindKeyboardSwipeableViews
-          index={index}
-          enableMouseEvents
-          onChangeIndex={(i) => setIndex(i)}
-        >
-          {slides}
-        </BindKeyboardSwipeableViews>
         <div
           style={{
-            position: "absolute",
+            position: "relative",
             width: "100%",
-            bottom: 20,
+            // bottom: 20,
             alignItems: "center",
             display: "flex",
             flexDirection: "column",
           }}
         >
+          {" "}
+          <BindKeyboardSwipeableViews
+            index={index}
+            enableMouseEvents
+            onChangeIndex={(i) => setIndex(i)}
+          >
+            {slides}
+          </BindKeyboardSwipeableViews>
           {/* {index !== 0 && ( */}
-            <>
-              <Pagination
-                dots={3}
-                index={index}
-                onChangeIndex={(i) => setIndex(i)}
-              />
-              <FinishSlideshowBtn
+          <>
+            <Pagination
+              dots={3}
+              index={index}
+              onChangeIndex={(i) => setIndex(i)}
+            />
+            {/* <FinishSlideshowBtn
                 text={index === totalSlides - 1 ? `Get Started` : "Next"}
                 onClick={handleNextSlide}
-              />
-            </>
+              /> */}
+          </>
           {/* )} */}
         </div>
       </div>

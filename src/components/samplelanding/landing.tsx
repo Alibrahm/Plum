@@ -38,7 +38,7 @@ export default function FixedBottomNavigation() {
     <Box sx={{ pb: 7 }} ref={ref}>
           <CssBaseline />
           
-      <Box sx={{ p: 2 }} >
+      <Box sx={{ p: 0 }} >
         <KycPriviliges />
           </Box>
           
