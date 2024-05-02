@@ -90,7 +90,7 @@ export default function App() {
               //@ts-ignore
               separator={<span style={{ width: "6px" }}></span>}
               isInputNum={true}
-              shouldAutoFocus={true}
+              shouldAutoFocus={false}
               inputStyle={{
                 border: "1px solid lightgray",
                 borderRadius: "8px",
