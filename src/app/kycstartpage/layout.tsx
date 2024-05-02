@@ -1,6 +1,13 @@
 
 import Head from "next/head";
+
 import "../../styles/globals.css";
+import { Advent_Pro } from "next/font/google";
+const Advent = Advent_Pro({
+  weight: "700",
+  subsets: ["latin"],
+ 
+});
 export const metadata = {
   manifest: "../../manifest.json",
   title: "Plum Finance",
@@ -20,8 +27,9 @@ export default function RootLayout({
         <meta name="description" content={metadata.description} />
         {/* Add other meta tags as needed */}
       </Head>
-      <body>
+      <body className={Advent.className}>
         {children}
+        {/* <InstallButton /> */}
       </body>
     </html>
   );

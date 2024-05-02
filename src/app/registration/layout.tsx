@@ -1,4 +1,11 @@
 import "../../styles/globals.css";
+import { Advent_Pro } from "next/font/google";
+import "../../styles/globals.css";
+const Advent = Advent_Pro({
+  weight: "700",
+  subsets: ["latin"],
+ 
+});
 export const metadata = {
   manifest:"../../manifest.json", 
   title: 'Next.js',
@@ -12,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={Advent.className}>{children}</body>
     </html>
   )
 }

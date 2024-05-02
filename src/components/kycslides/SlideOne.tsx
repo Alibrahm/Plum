@@ -27,7 +27,7 @@ const bull = (
   </Box>
 );
 
-export function SlideTwo() {
+export  function Slide() {
   return (
     <SlideDiv>
       <Card variant="outlined" sx={{ width: "100%" ,p:0}}>
@@ -36,6 +36,7 @@ export function SlideTwo() {
             background:
               "linear-gradient(to bottom, #522080, rgb(26 10 40 / 87%), #000000 100%)",
             color: "white",
+            height:'14rem'
           }}
         >
           <Image

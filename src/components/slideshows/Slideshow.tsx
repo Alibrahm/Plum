@@ -36,7 +36,7 @@ export function Slideshow({ slides }: { slides: ReactNode[] }) {
     if (index < totalSlides - 1) {
       setIndex((prevIndex) => prevIndex + 1); // Increment index by 1
     } else {
-      router.push("/login"); // Navigate to the "/onboarding" route
+      router.push("/phone"); // Navigate to the "/onboarding" route
     }
   };
 

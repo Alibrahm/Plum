@@ -13,8 +13,20 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import KycPriviliges from "../kyccard/kyccard"
-
+import ModeStandbyRoundedIcon from "@mui/icons-material/ModeStandbyRounded";
+import KycPriviliges from "../carousel/carousel";
+import { IconButton } from "@material-ui/core";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
+import CallMadeRoundedIcon from "@mui/icons-material/CallMadeRounded";
+import Transactions from "../../components/TransactList/transactions";
+import BottomNav from "../../components/layout/bottomNav";
+import Image from "next/image";
+import sendmoney from "../../public/images/bi_send-fill.svg";
+import Home from "../../public/images/home.svg";
+import Transact from "../../public/images/transact.svg";
+import Profile from "../../public/images/profile.svg";
+import Faq from "../../public/images/faq.svg";
 function refreshMessages(): MessageExample[] {
   const getRandomInt = (max: number) =>
     Math.floor(Math.random() * Math.floor(max));
@@ -35,23 +47,62 @@ export default function FixedBottomNavigation() {
   }, [value, setMessages]);
 
   return (
-    <Box sx={{ pb: 7 }} ref={ref}>
-          <CssBaseline />
-          
-      <Box sx={{ p: 0 }} >
-        <KycPriviliges />
-          </Box>
-          
-      <List sx={{ maxHeight: "540px", height: "525px", overflow: "scroll" }}>
-        {messages.map(({ primary, secondary, person }, index) => (
-          <ListItemButton key={index + person}>
-            <ListItemAvatar>
-              <Avatar alt="Profile Picture" src={person} />
-            </ListItemAvatar>
-            <ListItemText primary={primary} secondary={secondary} />
-          </ListItemButton>
-        ))}
-      </List>
+    <><Box sx={{ pb: 0 }} ref={ref}>
+    
+      <CssBaseline />
+
+      <Box sx={{ p: 0 }}>
+      <KycPriviliges />
+        <div className="grid grid-cols-2 gap-4 align-center  p-4 w-full ">
+          <button
+            aria-label="delete"
+            disabled
+            color="primary"
+            className=" my-auto bg-[#522080] shadow-md text-sm rounded-md text-[#FFFFFF]"
+          >
+            <div className="m-2 mx-auto rounded-lg px-4">
+              <CallMadeRoundedIcon
+                fontSize="small"
+                sx={{
+                  background: "#ffffff",
+                  fill: "black",
+                  borderRadius: "50%",
+                }} />
+              <span className="mx-2 p-1 my-auto">Send Money</span>
+            </div>
+          </button>
+          <button
+            aria-label="delete"
+            disabled
+            color="primary"
+            className="my-auto border border-[#522080] text-sm rounded-md text-[#522080]"
+          >
+            <div className="m-2  rounded-lg px-3">
+              <ModeStandbyRoundedIcon
+                fontSize="small"
+                sx={{
+                  background: "#ffffff",
+                  fill: "black",
+                  borderRadius: "50%",
+                }} />{" "}
+              <span className="mx-1 my-auto p-1">Withdraw</span>
+            </div>
+          </button>
+        </div>
+      </Box>
+
+      {/* <List sx={{ maxHeight: "540px", height: "525px", overflow: "scroll" }}>
+      {messages.map(({ primary, secondary, person }, index) => (
+        <ListItemButton key={index + person}>
+          <ListItemAvatar>
+            <Avatar alt="Profile Picture" src={person} />
+          </ListItemAvatar>
+          <ListItemText primary={primary} secondary={secondary} />
+        </ListItemButton>
+      ))}
+    </List> */}
+
+      <Transactions />
       <Paper
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
         elevation={3}
@@ -61,14 +112,74 @@ export default function FixedBottomNavigation() {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
-          }}
+          } }
+          sx={{bottom:'2px',width:'100%',height:'65px',position:'absolute',boxShadow: '0px 0px 12px rgba(0, 0, 0, 0.1)',}}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+          <BottomNavigationAction 
+          // label="Recents"
+           icon={
+           <Image
+          priority={true}
+          alt="slideshow image"
+          src={Home}
+          sizes="100vw"
+          style={{
+            width: "3rem",
+            height: "3rem",
+          }}
+        /> 
+        } />
+          <BottomNavigationAction 
+          // label="Favorites"
+           icon={<Image
+            priority={true}
+            alt="slideshow image"
+            src={Transact}
+            sizes="100vw"
+            style={{
+              width: "2rem",
+              height: "2rem",
+            }}
+          /> } />
+          <BottomNavigationAction
+            // label="Archive"
+            icon={   <Image
+              priority={true}
+              alt="slideshow image"
+              src={sendmoney}
+              sizes="100vw"
+              style={{
+                width: "3rem",
+                height: "3rem",
+              }}
+            /> } />
+          <BottomNavigationAction
+          //  label="Archive" 
+           icon={<Image
+            priority={true}
+            alt="slideshow image"
+            src={Profile}
+            sizes="100vw"
+            style={{
+              width: "3rem",
+              height: "2.5rem",
+            }}
+          />} />
+          <BottomNavigationAction 
+          // label="Archive" 
+          icon={<Image
+            priority={true}
+            alt="slideshow image"
+            src={Faq}
+            sizes="100vw"
+            style={{
+              width: "3rem",
+              height: "2.5rem",
+            }}
+          />} />
         </BottomNavigation>
       </Paper>
-    </Box>
+    </Box></>
   );
 }
 

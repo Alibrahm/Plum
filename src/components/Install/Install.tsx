@@ -1,40 +1,87 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-const InstallButton = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [showInstallButton, setShowInstallButton] = useState(false);
+const InstallPrompt = () => {
+  const [showInstallMessage, setShowInstallMessage] = useState(false);
 
   useEffect(() => {
-    const handleBeforeinstallprompt = (event:any) => {
-      event.preventDefault();
-      setDeferredPrompt(event);
-      setShowInstallButton(true);
+    // const isIos = () => {
+    //   const userAgent = window.navigator.userAgent.toLowerCase();
+    //   return /iphone|ipad|ipod/.test(userAgent);
+    // };
+    const isMobile = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod|android|android phone|android tablet/i.test(userAgent);
     };
 
-    window.addEventListener("beforeinstallprompt", handleBeforeinstallprompt);
+    const isInStandaloneMode = () =>
+      "standalone" in window.navigator && window.navigator.standalone;
 
+    if (isMobile() && !isInStandaloneMode()) {
+      setShowInstallMessage(true);
+    }
+  }, []);
+
+  const handleInstall = (event: { preventDefault: () => void; }) => {
+    // Prevent default Chrome behavior
+    event.preventDefault();
+    // Show the install prompt
+    console.log("Install prompt triggered. You can call event.prompt() here to show the native install banner.");
+  };
+  
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event: { preventDefault: () => void; }) => {
+      event.preventDefault();
+      setShowInstallMessage(true);
+    };
+  
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  
     return () => {
-      window.removeEventListener(
-        "beforeinstallprompt",
-        handleBeforeinstallprompt
-      );
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 
-  const handleClick = async () => {
-      if (deferredPrompt) {
-        //@ts-ignore
-        await deferredPrompt.prompt();
-        //@ts-ignore
-        const { outcome } = await deferredPrompt.userChoice;
-        setShowInstallButton(outcome === "accepted");
+  useEffect(() => {
+    const isMobile = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod|android|android phone|android tablet/i.test(userAgent);
+    };
+  
+    const handleBeforeInstallPrompt = (event: { preventDefault: () => void; }) => {
+      event.preventDefault();
+      setShowInstallMessage(true);
+    };
+  
+    if (isMobile()) {
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    }
+  
+    return () => {
+      if (isMobile()) {
+        window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       }
-  };
+    };
+  }, []);
 
+  // Render install prompt button if conditions are met
   return (
-    showInstallButton && <button onClick={handleClick}>Install App</button>
+    showInstallMessage && (
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-10">
+        <div className="max-w-screen-md mx-auto px-4 py-2 flex justify-between items-center">
+          <p className="text-sm text-gray-700">
+            Install this app for quick access!
+          </p>
+          <button
+            onClick={handleInstall}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+          >
+            Install
+          </button>
+        </div>
+      </div>
+    )
   );
 };
 
-export default InstallButton;
+export default InstallPrompt;

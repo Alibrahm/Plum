@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
-  /* --background-start-rgb: 214, 219, 220; */
-  /* --background-end-rgb: 255, 255, 255; */
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,28 +30,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-.PhoneInput {
-  display: flex;
-  align-items: center;
-  top: 43px;
-  position: relative;
-  color: black;
-  min-height: 42px !important;
-}
-
-.PhoneInput--focus {
-  display: flex;
-  align-items: center;
-  top: 43px;
-  position: relative;
-  color: black;
-}
-.PhoneInputInput{
-  min-height: 42px !important;
-}
-
-.PhoneInputCountry{
-  margin-left: 12px;
 }

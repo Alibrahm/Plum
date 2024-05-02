@@ -10,8 +10,8 @@ import Image from "next/image";
 import plumlogo from "../../images/plumlogo.svg";
 import {
   Slideshow,
-  SlideOne,
-  SlideTwo,
+  // SlideOne,
+
   SlideThree,
 } from "../../components/kycslides";
 const bull = (
@@ -28,8 +28,8 @@ const card = (
   
     <Slideshow
       slides={[
-        <SlideOne key="1" />,
-        <SlideTwo key="2" />,
+        // <SlideOne key="1" />,
+        // <SlideTwo key="2" />,
         <SlideThree key="3" />,
       ]}
     />

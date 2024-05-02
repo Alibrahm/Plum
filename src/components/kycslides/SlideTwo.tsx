@@ -1,65 +1,3 @@
-// "use client";
-// import { slideStyles } from "../../components/slideshows";
-// // import  slideStyles  from "../../components/slidestyles";
-// import Image from "next/image";
-// import profilePic from "../../public/plumslide3.jpg";
-// import { css } from '@emotion/react';
-// import styled from "@emotion/styled";
-
-// // Create a styled component for the div with slideStyles applied
-// const SlideDiv = styled.div`
-//   ${slideStyles}
-// `;
-
-// export function SlideTwo() {
-//   return (
-//     <SlideDiv>
-//       <div className="content" style={{ position: "relative" }}>
-//         <Image
-//           priority={true}
-//           alt="slideshow image"
-//           src={profilePic}
-//           sizes="100vw"
-//           style={{
-//             width: "100vw",
-//             height: "100vh",
-//           }}
-//         />
-//         <div
-//           className="overlay"
-//           style={{
-//             position: "absolute",
-//             top: 0,
-//             left: 0,
-//             width: "100%",
-//             height: "100%",
-//             background:
-//               "linear-gradient(to bottom, rgba(82, 32, 128, 0.426), rgba(26, 10, 40, 0.6), #000000 93%)",
-//           }}
-//         />
-//         <div
-//           style={{
-//             position: "absolute",
-//             top: "50%",
-//             left: "50%",
-//             transform: "translate(-50%, -50%)",
-//             textAlign: "center",
-//             color: "white",
-//             zIndex: 1, // Ensure text is above the overlay
-//           }}
-//         >
-//           <h1>Plum PWA</h1>
-//           <p>
-//             Lorem ipsum dolor sit amet consectetur. Natoque risus consectetur
-//             nam odio laoreet
-//           </p>
-//         </div>
-//       </div>
-//     </SlideDiv>
-//   );
-// }
-
-"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -70,10 +8,10 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import plumlogo from "../../images/plumlogo.svg";
 import { slideStyles } from "../../components/kycslides/Slideshow";
-// import slideStyles  from "../../components/slidestyles";
-
+import { Avatar } from "flowbite-react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import kenya from "../../public/images/KE.svg";
 
 // Create a styled component for the div with slideStyles applied
 const SlideDiv = styled.div`
@@ -88,16 +26,17 @@ const bull = (
   </Box>
 );
 
-export function SlideOne() {
+export default function SlideOne() {
   return (
-    <SlideDiv>
-      {/* <Box sx={{ minWidth: 275 }}> */}
-      <Card variant="outlined" sx={{ width: "100%",p:0 }}>
+    // <Card variant="outlined" sx={{width:'100%'}}>
         <CardContent
           sx={{
             background:
               "linear-gradient(to bottom, #522080, rgb(26 10 40 / 87%), #000000 100%)",
             color: "white",
+          height: '18rem',
+          // margin: '13px',
+          borderRadius:'12px'
           }}
         >
           <Image
@@ -110,6 +49,7 @@ export function SlideOne() {
               background: "transparent",
             }}
           />
+          <div className="flex justify-between">
           <div
             style={{
               fontFamily: "Ubuntu",
@@ -119,7 +59,22 @@ export function SlideOne() {
           >
             Balance Available
           </div>
+          <div className="flex flex-row">
+          <Image
+            priority={true}
+            alt="slideshow image"
+            src={kenya}
+            style={{
+              width: "60px",
+              height: "28px",
+              background: "transparent",
+            }}
+          />
+          <span className="my-auto">KE</span>
+          </div>
+          </div>
 
+<div className="flex flex-col">
           <div
             style={{
               fontFamily: "Ubuntu",
@@ -130,20 +85,10 @@ export function SlideOne() {
           >
             $30,0000
           </div>
+          <span>Samuel Inchwara</span>
+          </div>
         </CardContent>
-      </Card>
-      {/* </Box> */}
-      {/* <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions> */}
-    </SlideDiv>
+    // </Card>
+ 
   );
 }
-
-// export default function OutlinedCard() {
-//   return (
-//     <Box sx={{ minWidth: 275 }}>
-//       <Card variant="outlined">{card}</Card>
-//     </Box>
-//   );
-// }

@@ -10,53 +10,72 @@ import {
   Link,
   useMediaQuery,
 } from "@material-ui/core";
-// import LockOutlinedIcon from "@mui/icons/LockOutlined";
-import LockOutlinedIcon from "@mui/icons-material/AddToQueue";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { useRouter } from "next/navigation";
 import { styled } from "@mui/material/styles";
+import { Advent_Pro } from "next/font/google";
+const Advent = Advent_Pro({
+  weight: "700",
+  subsets: ["latin"],
+});
 export default function App() {
   const [otp, setOtp] = useState("");
   const isMediumScreen = useMediaQuery("(min-width:600px)");
-
+  const router = useRouter();
   // Define paper width based on screen size
   const paperWidth = isMediumScreen ? 540 : 320;
 
   const paperStyle: React.CSSProperties = {
-    padding: 20,
-    height: "70vh",
-    position: "absolute",
-    bottom: "8px",
+    height: "65vh",
+    // position: "absolute",
+    // bottom: "8px",
     boxShadow: "unset",
-    margin: "20px auto",
-    width: paperWidth,
+    // margin: "20px auto",
+    width: "-webkit-fill-available",
   };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  const handleProceed = () => {
+    // Navigate to the kyc details reg
+    router.push("/login");
+  };
 
   const muiStyle: React.CSSProperties = {
     display: "flex",
     justifyContent: "center",
-    flexDirection: 'column',
-    textAlign: 'center',
-    position: 'absolute',
-    bottom:'60px'
+    flexDirection: "column",
+    textAlign: "center",
+   background:'#ffffff',
+    width: "-webkit-fill-available",
+  };
+
+    const cardPlacement: React.CSSProperties = {
+      display: "flex",
+      // justifyContent: "space-between",
+      gap: '72px',
+      bottom:'0.2rem',
+      flexDirection: "column",
+      textAlign: "center",
+      position: "absolute",
+   background:'#ffffff',
+      width: "-webkit-fill-available",
+    };
+  
+     const handleHomePage = () => {
+       // Navigate to the /otp page
+       router.push("/onboarding");
   };
   
   return (
     <Grid style={muiStyle}>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid style={muiStyle}>
-          <h2>Verify Phone Number</h2>
-          <h4 style={{ marginBottom: "37px" }}>
-            An OTP has been sent to your Phone Number,please enter it to confirm
+      <Paper elevation={2} style={paperStyle}>
+        <Grid style={cardPlacement}>
+          <div className="ml-4">
+          <h2 className={Advent.className} style={{ fontSize: "52px" ,textAlign:'left',marginLeft:'4px'}}>
+            Verify Phone Number
+          </h2>
+          <h4 style={{ marginBottom: "2px" ,textAlign:'left',marginLeft:'4px'}} className={Advent.className}>
+          Lorem ipsum dolor sit amet consectetur. Natoque risus consectetur
+            nam odio laoreet
           </h4>
+          </div>
           <div
             style={{
               display: "flex",
@@ -67,37 +86,70 @@ export default function App() {
               value={otp}
               onChange={setOtp}
               numInputs={6}
-              renderSeparator={"-"}
               renderInput={(props) => <input {...props} />}
+              //@ts-ignore
+              separator={<span style={{ width: "6px" }}></span>}
+              isInputNum={true}
+              shouldAutoFocus={true}
+              inputStyle={{
+                border: "1px solid lightgray",
+                borderRadius: "8px",
+                width: "3rem",
+                height: "3rem",
+                fontSize: "12px",
+                color: "#000",
+                fontWeight: "400",
+                marginInline: "4px",
+                caretColor: "black",
+              }}
+              focusStyle={{
+                border: "1px solid #CFD3DB",
+                outline: "none",
+              }}
             />
           </div>
-          <Grid
-            // align="center"
-            container
+          <button
             style={{
-              marginTop: "48px",
-              gap: "10px",
               display: "flex",
+              border: "none",
               justifyContent: "center",
+              color: "#522080",
+              background: "inherit",
+              textDecorationLine: "underline",
             }}
           >
-         
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
+            Resend Code
+          </button>
+          <div
+            className="grid grid-cols-2 gap-4"
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(2, minmax(0, 1fr))`,
+              gap: "16px",
+              marginInline: "14px",
+              height: "2.7rem",
+              marginBottom:'12px'
+            }}
+          >
+            <button
+              style={{
+                borderRadius: "8px",
+                border:'1px solid black'
+              }}
             >
               Cancel
-            </Button>
-
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
+            </button>
+            <button
+              style={{
+                background: "#522080",
+                color: "#ffffff",
+                borderRadius: "8px",
+              }}
+              onClick={handleProceed}
             >
               Confirm
-            </Button>
-          </Grid>
+            </button>
+          </div>
         </Grid>
       </Paper>
     </Grid>

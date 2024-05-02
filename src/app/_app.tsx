@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import '../globals.css'
 export const metadata = {
   manifest: "../../manifest.json",
   title: "Next.js",

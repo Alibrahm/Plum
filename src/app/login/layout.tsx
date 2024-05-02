@@ -1,3 +1,4 @@
+import "../../styles/globals.css";
 export const metadata = {
   manifest:"../../manifest.json", 
   title: 'Next.js',
@@ -11,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-[#ffffff]">{children}</body>
     </html>
   )
 }
