@@ -86,7 +86,7 @@ export default function App() {
               value={otp}
               onChange={setOtp}
               numInputs={6}
-              renderInput={(props) => <input {...props} />}
+              renderInput={(props) => <input {...props}  autoFocus={false} />}
               //@ts-ignore
               separator={<span style={{ width: "6px" }}></span>}
               isInputNum={true}
